@@ -1,5 +1,5 @@
 /* Declaración de Variables "Let" para los números ingresados por el usuario, 
-y constante para el valor fijo de 5 materias */
+y constante para el valor fijo 5 que corresponden a 5 materias */
 let num1, num2, num3, num4, num5
 const num6 = 5
 
