@@ -12,7 +12,7 @@ do{
     num2 = parseFloat(prompt("ingresar nota final de la materia GEOGRAFÍA"));
     num3 = parseFloat(prompt("ingresar nota final de la materia LENGUA"));
     num4 = parseFloat(prompt("ingresar nota final de la materia MATEMÁTICAS"));
-    num5 = parseFloat(prompt("ingresar nota final de la materia FISICA"));
+    num5 = parseFloat(prompt("ingresar nota final de la materia FÍSICA"));
 
     //Mensajes para el usuario, respetando las condicionales, en caso de ingresar números invalidos
     if ((isNaN(num1)) || (isNaN(num2)) || (isNaN(num3)) || (isNaN(num4)) || (isNaN(num5))){
