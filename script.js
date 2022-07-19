@@ -41,26 +41,26 @@ productos.forEach(productoArray => {
     </div>
     `
 })
+//Traigo los elementos por ID
 const input1 = document.getElementById("input1")
 const botonBusqueda = document.getElementById("botonBusqueda")
 
-input1.addEventListener("input", () => {
+/* input1.addEventListener("input", () => {
     console.log(input1.value)
-})
-
-input1.addEventListener("change", () =>{
+}) */
+ const productosArray2 = [];
+input1.addEventListener("change", (e) =>{
     console.log(input1.value)
+        e.preventDefault();
         let colorProducto = input1.value
         const productoBuscado = productos.filter (producto => producto.color === colorProducto)
-        const productosArray2 = [];
-
         
-        if((colorProducto == "") || (productoBuscado.length == 0)) {
+        if((colorProducto == "") || (productoBuscado.length === 0)) {
         divProductos.innerHTML = `<p>Producto no encontrado, NO existe ese color</p>`
         } else {
             productoBuscado.forEach(productosArray2 => {
                 console.log(productosArray2)
-                divProductos.innerHTML += `
+                divProductos.innerHTML = `
                     <div class="card text-center card_color productos" id="producto${productosArray2.id}" style="width: 18rem;">
                         <img src="${productosArray2.imagen}" class="card-img-top" alt="Protectores deportivos">
                         <div class="card-body">
