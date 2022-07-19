@@ -26,7 +26,6 @@ const producto10 = new Producto(10, "Jaguar", "Unisex", "Niños", "negro", 500, 
 const productos = [producto1, producto2, producto3, producto4, producto5, producto6, producto8, producto9,]
 //Accedo a un elemento HTML mediante su ID
 const divProductos = document.getElementById("productos")
-const productosArray = [];
 //recorro el array con forEach, luego innerHTML el navegador lo interpreta como código HTML y genera nuevos nodos con su contenido dentro del elemento seleccionado
 productos.forEach(productoArray => {
     divProductos.innerHTML += `
@@ -41,6 +40,8 @@ productos.forEach(productoArray => {
     </div>
     `
 })
+
+const boton1 = document.getElementById("boton1")
 const input1 = document.getElementById("input1")
 const botonBusqueda = document.getElementById("botonBusqueda")
 
@@ -50,31 +51,94 @@ input1.addEventListener("input", () => {
 
 input1.addEventListener("change", () =>{
     console.log(input1.value)
-        let colorProducto = input1.value
-        const productoBuscado = productos.filter (producto => producto.color === colorProducto)
-        const productosArray2 = [];
-
-        
-        if((colorProducto == "") || (productoBuscado.length == 0)) {
-        divProductos.innerHTML = `<p>Producto no encontrado, NO existe ese color</p>`
-        } else {
-            productoBuscado.forEach(productosArray2 => {
-                console.log(productosArray2)
-                divProductos.innerHTML += `
-                    <div class="card text-center card_color productos" id="producto${productosArray2.id}" style="width: 18rem;">
-                        <img src="${productosArray2.imagen}" class="card-img-top" alt="Protectores deportivos">
-                        <div class="card-body">
-                        <h5 class="card-title">Protector: ${productosArray2.nombre}</h5>
-                        <p class="card-text p">Género: ${productosArray2.genero} | Color: ${productosArray2.color}</p>
-                        <p class="card-text precio">Precio: $${productosArray2.precio}</p>
-                        <button type="button" class="btn btn-outline-secondary">Enviar al Carrito</button>
-                        </div>
-                    </div>
-                    `
-            });
-        }
 })
 
 botonBusqueda.addEventListener("click", (event) =>{
-    event.preventDefault(input1.value)
+    console.log(input1.value)
+    event.preventDefault()
 })
+
+
+class User {
+    constructor(nombre, email, password){
+        this.nombre = nombre
+        this.email = email
+        this.password = password
+    }
+    
+}
+
+const usuariosIngresados = []
+
+const form = document.getElementById("idForm")
+const divUsers = document.getElementById("divUsers")
+const botonUsers = document.getElementById("botonUsers")
+
+form.addEventListener("submit", (event) => {
+    event.preventDefault()
+    
+    let nombre = document.getElementById("idUser").value
+    let email = document.getElementById("idEmail").value
+    let password = document.getElementById("idPassword").value
+
+    const user = new User(nombre, email, password)
+    usuariosIngresados.push(user)
+    console.log(usuariosIngresados)
+
+    form.reset()
+})
+
+botonUsers.addEventListener("click", () => {
+    usuariosIngresados.forEach(user =>{
+        divUsers.innerHTML +=`
+        <div class="card" style="width: 18rem; margin: 3px">
+            <div class="card-body">
+                <h5 class="card-title">${user.nombre}</h5>
+                <p class="card-text">${user.email}</p>
+            </div>
+        </div>
+        `
+    })
+})
+
+
+const resultadoBusqueda = []
+let productosMostrar
+const divProductos = document.getElementById("idDivProductos")
+for(let producto of productos){
+    productosMostrar = divProductos.innerHTML +=`
+
+    `
+}
+
+const inputBusqueda = document.getElementById("idinputBusqueda")
+const buttonBusqueda = document.getElementById("idbubusqueda")
+
+buttonBusqueda.addEventListener("click", () =>{
+    resultadoBusqueda = productos.filter(producto => producto.color >= inputBusqueda.value)
+    productosMostrar = resultadoBusqueda
+})
+
+
+function filtrarBusqueda(e) {
+    e.preventDefault();
+
+    // Tomo el value del input y le agrego toLowerCase para que la búsqueda no sea
+    // case sensitive
+    let ingreso = document.getElementById("busqueda").value.toLowerCase();
+    let arrayFiltrado = alfajores.filter((elemento) => elemento.marca.toLowerCase().includes(ingreso));
+
+    imprimirProductosEnHTML(arrayFiltrado);
+}
+
+// --- Eventos
+let btnFiltrar = document.getElementById("btnFiltrar");
+btnFiltrar.addEventListener("click", filtrarBusqueda);
+
+// Ejecución del código
+// --- Invocación de funciones ---
+imprimirProductosEnHTML(alfajores);
+
+// Consulta al Storage para saber si hay información almacenada
+// Si hay datos, se imprimen en el HTML al refrescar la página
+carrito = chequearCarritoEnStorage();

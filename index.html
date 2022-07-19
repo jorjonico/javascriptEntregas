@@ -4,9 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@100;400;600;700&family=Roboto:wght@100;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/9f903b0588.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>Protectores Deportivos</title>
 </head>
 <body>
+    <div class="col-12 text-center mt-5" >
+        <h2>Protectores deportivos</h2>
+        <h4>Para buscar color del protector ingrese uno de los colores existentes 
+        <br>(Negro, Blanco, Rojo, Azul, Rosa, Verde)</h4>
+        <div class="d-flex justify-content-center mt-4" id="idForm">
+            <div class="col-6 p-2">
+                <input id="input1" class="form-control" type="text" placeholder="Ingresar color" aria-label=".form-control-lg example">
+            </div>
+            <div class="col-1 p-2">
+                <button id="botonBusqueda" type="button" class="btn btn-outline-dark">Buscar</button>
+            </div>
+        </div>
+    </div>
+    <div class="container"> <!-- contenedor de los productos -->
+        <div id="productos" class="row text-center mt-5"><!-- Div con el ID "productos" donde luego se cargan dinamcamente desde JS -->
+        </div>
+    </div>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="./script.js"></script>
 </body>
 </html>
