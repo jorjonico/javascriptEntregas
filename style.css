@@ -61,3 +61,8 @@ h5{
 .precio {
     font-size: 1.2rem;
 }
+
+.estiloCarrito{
+    text-align: center;
+    color: rgb(140, 140, 140);
+}
