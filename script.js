@@ -1,3 +1,21 @@
+let carrito = [];
+
+if(localStorage.getItem("carritoEnStorage")){
+    carrito = JSON.parse(localStorage.getItem("carritoEnStorage"))
+    carrito.innerHTML +=``
+    carrito.forEach((productoArray) => {
+        carrito.innerHTML +=`
+        <div class="card-header text-center">Nombre: ${productoArray.nombre}</div>
+        <h4 class="card-title text-center p-2">Precio:${productoArray.precio}</h4>
+        <button type="button" class="btn btn-outline-dark" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Borrar</button>
+        `
+    })
+}else{ 
+        carrito.innerHTML +=`
+        <p>Sin Productos</p>`
+}
+
+
 //clase del producto con el constructor
 class Producto {
     constructor(id, nombre = "Predeterminado", genero = "Predeterminado", edad = "Predeterminado", color = "Predeterminado", precio = 1, stock = 1, imagen) {
@@ -36,9 +54,10 @@ const producto21 = new Producto(15, "Delfín", "Mujer", "Adulto", "celeste", 900
 
 const productos = [producto1, producto2, producto3, producto4, producto5, producto6, producto8, producto9, producto10, producto11, producto12, producto13, producto14, producto15, producto16, producto17, producto18, producto19, producto20, producto21]
 const productosIndex = [producto1, producto11, producto3, producto18, producto5, producto6, producto13, producto15]
+
 //Accedo a un elemento HTML mediante su ID
 const divProductos = document.getElementById("productos")
-
+const divCarrito = document.getElementById("carrito")
 //recorro el array con forEach, luego innerHTML el navegador lo interpreta como código HTML y genera nuevos nodos con su contenido dentro del elemento seleccionado
 productosIndex.forEach(productoArray => {
     divProductos.innerHTML += `
@@ -54,7 +73,6 @@ productosIndex.forEach(productoArray => {
     `
 })
 
-const carrito = [];
 productosIndex.forEach(productoArray => {
     let botonCard = document.getElementById(`producto${productoArray.id}`).lastElementChild.lastElementChild
     
@@ -69,6 +87,7 @@ productosIndex.forEach(productoArray => {
 const input1 = document.getElementById("input1")
 const botonBusqueda = document.getElementById("botonBusqueda")
 const botonTodo = document.getElementById("botonTodos")
+
 //input con el filtrado de productos por color
 input1.addEventListener("change", (e) =>{
         e.preventDefault();
@@ -132,4 +151,12 @@ botonTodo.addEventListener("click", (event) =>{
             localStorage.setItem("carritoEnStorage", JSON.stringify(carrito))
         })
     })
+})
+
+carrito.forEach((productoArray) => {
+    divCarrito.innerHTML +=`
+    <div class="card-header text-center">Nombre: ${productoArray.nombre}</div>
+    <h4 class="card-title text-center p-2">Precio:${productoArray.precio}</h4>
+    <button type="button" class="btn btn-outline-dark" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Borrar</button>
+    `
 })
