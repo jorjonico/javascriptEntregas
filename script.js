@@ -43,16 +43,28 @@ const divProductos = document.getElementById("productos")
 productosIndex.forEach(productoArray => {
     divProductos.innerHTML += `
         <div class="card text-center card_color productos" id="producto${productoArray.id}" style="width: 18rem;">
-        <img src="${productoArray.imagen}" class="card-img-top" alt="Protectores deportivos">
-        <div class="card-body">
-        <h5 class="card-title">Nombre: ${productoArray.nombre}</h5>
-        <p class="card-text p">Género: ${productoArray.genero} | Edad: ${productoArray.edad}</p>
-        <p class="card-text precio">Precio: $${productoArray.precio}</p>
-        <button type="button" class="btn btn-outline-secondary">Enviar al Carrito</button>
+            <img src="${productoArray.imagen}" class="card-img-top" alt="Protectores deportivos">
+            <div class="card-body">
+                <h5 class="card-title">Nombre: ${productoArray.nombre}</h5>
+                <p class="card-text p">Género: ${productoArray.genero} | Edad: ${productoArray.edad}</p>
+                <p class="card-text precio">Precio: $${productoArray.precio}</p>
+                <button type="button" class="btn btn-outline-secondary">Enviar al Carrito</button>
+            </div>
         </div>
-    </div>
     `
 })
+
+const carrito = [];
+productosIndex.forEach(productoArray => {
+    let botonCard = document.getElementById(`producto${productoArray.id}`).lastElementChild.lastElementChild
+    
+    botonCard.addEventListener("click", () =>{
+        const productoCarrito = new Producto (productoArray.id, productoArray.nombre, productoArray.genero, productoArray.edad, productoArray.color, productoArray.precio, productoArray.stock, productoArray.imagen);
+        carrito.push(productoCarrito);
+        localStorage.setItem("carritoEnStorage", JSON.stringify(carrito))
+    })
+})
+
 //Traigo los elementos por ID
 const input1 = document.getElementById("input1")
 const botonBusqueda = document.getElementById("botonBusqueda")
@@ -71,15 +83,25 @@ input1.addEventListener("change", (e) =>{
                     <div class="card text-center card_color productos" id="producto${productosArray2.id}" style="width: 18rem;">
                         <img src="${productosArray2.imagen}" class="card-img-top" alt="Protectores deportivos">
                         <div class="card-body">
-                        <h5 class="card-title">Nombre: ${productosArray2.nombre}</h5>
-                        <p class="card-text p">Género: ${productosArray2.genero} | Edad: ${productosArray2.edad}</p>
-                        <p class="card-text precio">Precio: $${productosArray2.precio}</p>
-                        <button type="button" class="btn btn-outline-secondary">Enviar al Carrito</button>
+                            <h5 class="card-title">Nombre: ${productosArray2.nombre}</h5>
+                            <p class="card-text p">Género: ${productosArray2.genero} | Edad: ${productosArray2.edad}</p>
+                            <p class="card-text precio">Precio: $${productosArray2.precio}</p>
+                            <button type="button" class="btn btn-outline-secondary">Enviar al Carrito</button>
                         </div>
                     </div>
                     `
             });
+            productoBuscado.forEach(productosArray2 => {
+                let botonCard = document.getElementById(`producto${productosArray2.id}`).lastElementChild.lastElementChild
+                
+                botonCard.addEventListener("click", () =>{
+                    const productoCarrito = new Producto (productosArray2.id, productosArray2.nombre, productosArray2.genero, productosArray2.edad, productosArray2.color, productosArray2.precio, productosArray2.stock, productosArray2.imagen);
+                    carrito.push(productoCarrito);
+                    localStorage.setItem("carritoEnStorage", JSON.stringify(carrito))
+                })
+            })
         }
+
 })
 botonBusqueda.addEventListener("click", (event) =>{
     event.preventDefault(input1.value)
@@ -100,5 +122,14 @@ botonTodo.addEventListener("click", (event) =>{
             </div>
         </div>
         `
+    })
+    productos.forEach(productoArray => {
+        let botonCard = document.getElementById(`producto${productoArray.id}`).lastElementChild.lastElementChild
+        
+        botonCard.addEventListener("click", () =>{
+            const productoCarrito = new Producto (productoArray.id, productoArray.nombre, productoArray.genero, productoArray.edad, productoArray.color, productoArray.precio, productoArray.stock, productoArray.imagen);
+            carrito.push(productoCarrito);
+            localStorage.setItem("carritoEnStorage", JSON.stringify(carrito))
+        })
     })
 })
