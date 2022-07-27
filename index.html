@@ -22,15 +22,18 @@
         <h2>Protectores deportivos</h2>
         <h4>Buscar color del protector ingresando uno de los colores disponibles 
         <br>(Negro, Rojo, Azul, Celeste, Rosa, Violeta, Amarillo, Verde y Gris)</h4>
-        <div class="d-flex justify-content-center mt-4" id="idForm">
-            <div class="col-8 p-2"><!-- imput para ingresar manualmente los coloresde busqueda -->
+        <div class="d-flex justify-content-center pt-3" id="idForm">
+            <div class="p-2 flex-grow-1"><!-- imput para ingresar manualmente los coloresde busqueda -->
                 <input id="input1" class="form-control" type="text" placeholder="Ingresar color" aria-label=".form-control-lg example">
             </div>
-            <div class="col-1 p-2"><!-- boton para la busqueda -->
+            <div class="p-2"><!-- boton para la busqueda -->
                 <button id="botonBusqueda" type="button" class="btn btn-outline-dark">Buscar</button>
             </div>
-            <div class="col-2 p-2"><!-- boton para que carge todos los productos -->
+            <div class="p-2"><!-- boton para que carge todos los productos -->
                 <button id="botonTodos" type="button" class="btn btn-outline-danger">Todos los productos</button>
+            </div>
+            <div class="p-2"><!-- boton para la busqueda -->
+                <button id="botonCarrito" type="button" class="btn btn-outline-dark">Ver Carrito</button>
             </div>
         </div>
     </div>
@@ -40,9 +43,12 @@
         </div>
         <div class="col-2 mt-5 "><!-- Div con el ID "carrito" cargan los productos  -->
             <div class="col align-self-start pb-2 border-bottom border-danger">
-                <p class="fs-4 estiloCarrito p-0 m-0 mt-2 ">Carrito</p>
+                <!-- <p class="fs-4 estiloCarrito p-0 m-0 mt-2 ">Carrito</p> -->
             </div>
-            <div id="carrito" class="card border-dark p-0 mt-2">
+            <div id="carrito" class="card p-0">
+<!--                 <div class="card-header text-center">Nombre: Toro</div>
+                    <h4 class="card-title text-center p-2">Precio:$950</h4>
+                    <button type="button" class="btn btn-outline-dark" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Borrar</button> -->
             </div>
         </div>
     </div>

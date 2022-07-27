@@ -1,19 +1,4 @@
-let carrito = [];
 
-if(localStorage.getItem("carritoEnStorage")){
-    carrito = JSON.parse(localStorage.getItem("carritoEnStorage"))
-    carrito.innerHTML +=``
-    carrito.forEach((productoArray) => {
-        carrito.innerHTML +=`
-        <div class="card-header text-center">Nombre: ${productoArray.nombre}</div>
-        <h4 class="card-title text-center p-2">Precio:${productoArray.precio}</h4>
-        <button type="button" class="btn btn-outline-dark" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Borrar</button>
-        `
-    })
-}else{ 
-        carrito.innerHTML +=`
-        <p>Sin Productos</p>`
-}
 
 
 //clase del producto con el constructor
@@ -87,6 +72,7 @@ productosIndex.forEach(productoArray => {
 const input1 = document.getElementById("input1")
 const botonBusqueda = document.getElementById("botonBusqueda")
 const botonTodo = document.getElementById("botonTodos")
+const botonCarrito = document.getElementById("botonCarrito")
 
 //input con el filtrado de productos por color
 input1.addEventListener("change", (e) =>{
@@ -153,10 +139,37 @@ botonTodo.addEventListener("click", (event) =>{
     })
 })
 
-carrito.forEach((productoArray) => {
-    divCarrito.innerHTML +=`
-    <div class="card-header text-center">Nombre: ${productoArray.nombre}</div>
-    <h4 class="card-title text-center p-2">Precio:${productoArray.precio}</h4>
-    <button type="button" class="btn btn-outline-dark" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Borrar</button>
-    `
+let carrito = [];
+botonCarrito.addEventListener("click", (e) =>{
+    e.preventDefault(input1.value)
+    carrito = JSON.parse(localStorage.getItem("carritoEnStorage"))
+    
+    divCarrito.innerText =``
+    carrito.forEach((productoArray) => {
+        divCarrito.innerHTML +=`
+        <div class="card-header text-center mt-3">Nombre: ${productoArray.nombre}
+        <h4 class="card-title text-center p-2">Precio:${productoArray.precio}</h4>
+        <button type="button" class="btn btn-outline-dark" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Borrar</button></div>
+        `
+    })
 })
+
+
+
+
+/* if(localStorage.getItem("carritoEnStorage")){
+    carrito = JSON.parse(localStorage.getItem("carritoEnStorage"))
+
+    carrito.forEach((productoArray) => {
+        divCarrito.innerHTML +=`
+        <div class="card-header text-center mt-3">Nombre: ${productoArray.nombre}
+        <h4 class="card-title text-center p-2">Precio:${productoArray.precio}</h4>
+        <button type="button" class="btn btn-outline-dark" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Borrar</button></div>
+        `
+    })
+
+}else{ 
+        carrito.innerHTML +=`
+        <p>Sin Productos</p>`
+}
+ */
