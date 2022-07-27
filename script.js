@@ -155,7 +155,7 @@ botonCarrito.addEventListener("click", (e) =>{
         <h6 class="mt-2">Nombre:${productoArray.nombre} <span class="badge bg-danger mb-2">$${productoArray.precio}</span><button type="button" class="btn btn-outline-dark btn-sm m-1 p-1">Borrar</button></h6>
         `
     })
-    carrito.forEach(productoArray => {
+    /* carrito.forEach(productoArray => {
         let botonBorrar = document.getElementById(`productoCarrito${productoArray.id}`).lastElementChild
         console.log(botonBorrar)
         botonBorrar.addEventListener("click", () =>{
@@ -163,7 +163,7 @@ botonCarrito.addEventListener("click", (e) =>{
             carrito.push(productoCarrito);
             localStorage.setItem("carritoEnStorage", JSON.stringify(carrito))
         })
-    })
+    }) */
 })
 
 
