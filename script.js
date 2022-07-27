@@ -1,5 +1,10 @@
-
-
+let carrito = [];
+//creo el array vacio carrito y compruebo al ingresar en el sitio web si existe info el localStorage, si no lo creo
+if(localStorage.getItem("carrito")){
+    carrito = JSON.parse(localStorage.getItem("carrito"))
+}else{ 
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+}
 
 //clase del producto con el constructor
 class Producto {
@@ -64,7 +69,7 @@ productosIndex.forEach(productoArray => {
     botonCard.addEventListener("click", () =>{
         const productoCarrito = new Producto (productoArray.id, productoArray.nombre, productoArray.genero, productoArray.edad, productoArray.color, productoArray.precio, productoArray.stock, productoArray.imagen);
         carrito.push(productoCarrito);
-        localStorage.setItem("carritoEnStorage", JSON.stringify(carrito))
+        localStorage.setItem("carrito", JSON.stringify(carrito))
     })
 })
 
@@ -102,7 +107,7 @@ input1.addEventListener("change", (e) =>{
                 botonCard.addEventListener("click", () =>{
                     const productoCarrito = new Producto (productosArray2.id, productosArray2.nombre, productosArray2.genero, productosArray2.edad, productosArray2.color, productosArray2.precio, productosArray2.stock, productosArray2.imagen);
                     carrito.push(productoCarrito);
-                    localStorage.setItem("carritoEnStorage", JSON.stringify(carrito))
+                    localStorage.setItem("carrito", JSON.stringify(carrito))
                 })
             })
         }
@@ -117,13 +122,13 @@ botonTodo.addEventListener("click", (event) =>{
     divProductos.innerText =``
     productos.forEach(productoArray => {
         divProductos.innerHTML += `
-            <div class="card text-center card_color productos" id="producto${productoArray.id}" style="width: 18rem;">
+        <div class="card text-center card_color productos" id="producto${productoArray.id}" style="width: 18rem;">
             <img src="${productoArray.imagen}" class="card-img-top" alt="Protectores deportivos">
             <div class="card-body">
-            <h5 class="card-title">Nombre: ${productoArray.nombre}</h5>
-            <p class="card-text p">Género: ${productoArray.genero} | Edad: ${productoArray.edad}</p>
-            <p class="card-text precio">Precio: $${productoArray.precio}</p>
-            <button type="button" class="btn btn-outline-secondary">Enviar al Carrito</button>
+                <h5 class="card-title">Nombre: ${productoArray.nombre}</h5>
+                <p class="card-text p">Género: ${productoArray.genero} | Edad: ${productoArray.edad}</p>
+                <p class="card-text precio">Precio: $${productoArray.precio}</p>
+                <button type="button" class="btn btn-outline-secondary">Enviar al Carrito</button>
             </div>
         </div>
         `
@@ -134,23 +139,30 @@ botonTodo.addEventListener("click", (event) =>{
         botonCard.addEventListener("click", () =>{
             const productoCarrito = new Producto (productoArray.id, productoArray.nombre, productoArray.genero, productoArray.edad, productoArray.color, productoArray.precio, productoArray.stock, productoArray.imagen);
             carrito.push(productoCarrito);
-            localStorage.setItem("carritoEnStorage", JSON.stringify(carrito))
+            localStorage.setItem("carrito", JSON.stringify(carrito))
         })
     })
 })
 
-let carrito = [];
+
 botonCarrito.addEventListener("click", (e) =>{
     e.preventDefault(input1.value)
-    carrito = JSON.parse(localStorage.getItem("carritoEnStorage"))
+    carrito = JSON.parse(localStorage.getItem("carrito"))
     
-    divCarrito.innerText =``
+    divCarrito.innerText =`Productos en Carrito`
     carrito.forEach((productoArray) => {
         divCarrito.innerHTML +=`
-        <div class="card-header text-center mt-3">Nombre: ${productoArray.nombre}
-        <h4 class="card-title text-center p-2">Precio:${productoArray.precio}</h4>
-        <button type="button" class="btn btn-outline-dark" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Borrar</button></div>
+        <h6 class="mt-2">Nombre:${productoArray.nombre} <span class="badge bg-danger mb-2">$${productoArray.precio}</span><button type="button" class="btn btn-outline-dark btn-sm m-1 p-1">Borrar</button></h6>
         `
+    })
+    carrito.forEach(productoArray => {
+        let botonBorrar = document.getElementById(`productoCarrito${productoArray.id}`).lastElementChild
+        console.log(botonBorrar)
+        botonBorrar.addEventListener("click", () =>{
+            const productoCarrito = new Producto (productoArray.id, productoArray.nombre, productoArray.genero, productoArray.edad, productoArray.color, productoArray.precio, productoArray.stock, productoArray.imagen);
+            carrito.push(productoCarrito);
+            localStorage.setItem("carritoEnStorage", JSON.stringify(carrito))
+        })
     })
 })
 
@@ -169,7 +181,6 @@ botonCarrito.addEventListener("click", (e) =>{
     })
 
 }else{ 
-        carrito.innerHTML +=`
-        <p>Sin Productos</p>`
-}
- */
+        localStorage.setItem("carrito", JSON.stringify(carrito))
+} */
+
