@@ -145,25 +145,26 @@ botonTodo.addEventListener("click", (event) =>{
 })
 
 
-botonCarrito.addEventListener("click", (e) =>{
-    e.preventDefault(input1.value)
-    carrito = JSON.parse(localStorage.getItem("carrito"))
-    
+botonCarrito.addEventListener("click", () =>{
+    let arrayStorage = JSON.parse(localStorage.getItem("carrito"))
     divCarrito.innerText =`Productos en Carrito`
-    carrito.forEach((productoArray) => {
+
+    arrayStorage.forEach((producto) => {
         divCarrito.innerHTML +=`
-        <h6 class="mt-2">Nombre:${productoArray.nombre} <span class="badge bg-danger mb-2">$${productoArray.precio}</span><button type="button" class="btn btn-outline-dark btn-sm m-1 p-1">Borrar</button></h6>
+        <h6 class="mt-2" id:"producto ${producto.id}">Nombre:${producto.nombre} <span class="badge bg-danger mb-2">$${producto.precio}</span><button type="button" class="btn btn-outline-dark btn-sm m-1 p-1">Borrar</button></h6>
         `
     })
-    /* carrito.forEach(productoArray => {
-        let botonBorrar = document.getElementById(`productoCarrito${productoArray.id}`).lastElementChild
+    arrayStorage.forEach((producto) => {
+       
+        console.log(document.getElementById(`producto${producto.id}`))
+/*         let botonBorrar = document.getElementById(`productoCarrito${productoArray.id}`).lastElementChild
         console.log(botonBorrar)
         botonBorrar.addEventListener("click", () =>{
             const productoCarrito = new Producto (productoArray.id, productoArray.nombre, productoArray.genero, productoArray.edad, productoArray.color, productoArray.precio, productoArray.stock, productoArray.imagen);
             carrito.push(productoCarrito);
             localStorage.setItem("carritoEnStorage", JSON.stringify(carrito))
-        })
-    }) */
+        }) */
+    })
 })
 
 
