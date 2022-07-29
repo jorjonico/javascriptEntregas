@@ -156,10 +156,17 @@ botonCarrito.addEventListener("click", () =>{
 
     arrayStorage.forEach((local, indice) => {
         divCarrito.innerHTML +=`
-        <h6 id:"local${indice}" class="mt-2">Nombre:${local.nombre}<span class="badge bg-danger mb-2">$${local.precio}</span><button type="button" class="btn btn-outline-dark btn-sm m-1 p-1">Borrar</button></h6>
+        <h6 id:"local${indice}" class="mt-2">Nombre:${local.nombre}<span class="badge bg-danger mb-2">$${local.precio}</span><button id="local${local.id}" type="button" class="btn btn-outline-dark btn-sm m-1 p-1">Borrar</button></h6>
         `
+    });
+    arrayStorage.forEach((local) =>{
+        let botonEliminar = document.getElementById(`local${local.id}`);
+        botonEliminar.addEventListener("click", () =>{
+            document.getElementById(`local${local.id}`).parentElement.remove()
+            carrito.splice(local,1)
+            localStorage.setItem("carrito",JSON.stringify(carrito))
+            console.log(`${local.nombre} Eliminada del carrito`)
+        })
     })
-/*     arrayStorage.forEach((local, indice) =>{
-        console.log(document.getElementById(`local${indice}`))
-    }) */
 })
+
