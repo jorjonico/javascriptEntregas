@@ -57,7 +57,7 @@ productosIndex.forEach(productoArray => {
                 <h5 class="card-title">Nombre: ${productoArray.nombre}</h5>
                 <p class="card-text p">Género: ${productoArray.genero} | Edad: ${productoArray.edad}</p>
                 <p class="card-text precio">Precio: $${productoArray.precio}</p>
-                <button type="button" class="btn btn-outline-secondary">Enviar al Carrito</button>
+                <button type="button" class="btn btn-outline-secondary">Enviar al Carrito 🛒</button>
             </div>
         </div>
     `
@@ -99,7 +99,7 @@ input1.addEventListener("change", (e) =>{
                             <h5 class="card-title">Nombre: ${productosArray2.nombre}</h5>
                             <p class="card-text p">Género: ${productosArray2.genero} | Edad: ${productosArray2.edad}</p>
                             <p class="card-text precio">Precio: $${productosArray2.precio}</p>
-                            <button type="button" class="btn btn-outline-secondary">Enviar al Carrito</button>
+                            <button type="button" class="btn btn-outline-secondary">Enviar al Carrito 🛒</button>
                         </div>
                     </div>
                     `
@@ -132,7 +132,7 @@ botonTodo.addEventListener("click", (event) =>{
                 <h5 class="card-title">Nombre: ${productoArray.nombre}</h5>
                 <p class="card-text p">Género: ${productoArray.genero} | Edad: ${productoArray.edad}</p>
                 <p class="card-text precio">Precio: $${productoArray.precio}</p>
-                <button type="button" class="btn btn-outline-secondary">Enviar al Carrito</button>
+                <button type="button" class="btn btn-outline-secondary">Enviar al Carrito 🛒</button>
             </div>
         </div>
         `
@@ -152,12 +152,14 @@ botonTodo.addEventListener("click", (event) =>{
 // boton carrito traigo los elementos del LocalStorage que estan en el array carrito y los muestro en el DOM
 botonCarrito.addEventListener("click", () =>{
     let arrayStorage = JSON.parse(localStorage.getItem("carrito"))
-    divCarrito.innerText =`Productos en Carrito`
+    divCarrito.innerText =`Productos en Carrito🔻`
 
     arrayStorage.forEach((local, indice) => {
         divCarrito.innerHTML +=`
         <h6 id:"local${indice}" class="mt-2">Nombre:${local.nombre}<span class="badge bg-danger mb-2">$${local.precio}</span><button type="button" class="btn btn-outline-dark btn-sm m-1 p-1">Borrar</button></h6>
         `
     })
+/*     arrayStorage.forEach((local, indice) =>{
+        console.log(document.getElementById(`local${indice}`))
+    }) */
 })
-
