@@ -80,8 +80,6 @@ const botonTodo = document.getElementById("botonTodos")
 const botonCarrito = document.getElementById("botonCarrito")
 
 
-
-
 //input con el filtrado de productos por color
 input1.addEventListener("change", (e) =>{
         e.preventDefault();
@@ -159,6 +157,7 @@ botonCarrito.addEventListener("click", () =>{
         <h6 id:"local${indice}" class="mt-2">Nombre:${local.nombre}<span class="badge bg-danger mb-2">$${local.precio}</span><button id="local${local.id}" type="button" class="btn btn-outline-dark btn-sm m-1 p-1">Borrar</button></h6>
         `
     });
+    //boton borrar elementos del carrito, primero del DOM, luego del Array y por ultimo vuelvo a mandar al local storage con el array modificado sin el item, por ultimo muestro en la consola el m¿nombre del producto eliminado del carrito
     arrayStorage.forEach((local) =>{
         let botonEliminar = document.getElementById(`local${local.id}`);
         botonEliminar.addEventListener("click", () =>{
