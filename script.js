@@ -1,10 +1,16 @@
-let carrito = [];
+/* let carrito = []; */
 //creo el array vacio carrito y compruebo al ingresar en el sitio web si existe info el localStorage, si no lo creo
-if(localStorage.getItem("carrito")){
+/* if(localStorage.getItem("carrito")){
     carrito = JSON.parse(localStorage.getItem("carrito"))
 }else{ 
     localStorage.setItem("carrito", JSON.stringify(carrito))
-}
+} */
+
+// Operador ternario donde compruebo al ingresar en el sitio web si existe info el localStorage, si no lo creo carrito []
+const carrito = JSON.parse(localStorage.getItem("carrito")) ?? []
+// operador lógico AND
+carrito.length === 0 && console.log("El carito está vacio");
+
 
 //clase del producto con el constructor
 class Producto {
@@ -40,14 +46,15 @@ const producto17 = new Producto(17, "jaguar", "Hombre", "Adulto", "amarillo", 95
 const producto18 = new Producto(18, "Lince", "Hombre", "Niños", "amarillo", 550, 50, `img/amarillo.webp`)
 const producto19 = new Producto(19, "Anaconda", "Hombre", "Adulto", "gris", 950, 50, `img/gris.webp`)
 const producto20 = new Producto(20, "Culebra", "Unisex", "Niños", "gris", 550, 50, `img/gris.webp`)
-const producto21 = new Producto(15, "Delfín", "Mujer", "Adulto", "celeste", 900, 50, `img/celeste.webp`)
+const producto21 = new Producto(21, "Delfín", "Mujer", "Adulto", "celeste", 900, 50, `img/celeste.webp`)
 
 const productos = [producto1, producto2, producto3, producto4, producto5, producto6, producto8, producto9, producto10, producto11, producto12, producto13, producto14, producto15, producto16, producto17, producto18, producto19, producto20, producto21]
-const productosIndex = [producto1, producto11, producto3, producto18, producto5, producto6, producto13, producto15]
+const productosIndex = [producto1, producto11, producto3, producto18, producto5, producto6, producto13, producto15, producto20]
 
 //Accedo a un elemento HTML mediante su ID
 const divProductos = document.getElementById("productos")
 const divCarrito = document.getElementById("carrito")
+const precioCarrito = document.getElementById("precioCarrito")
 //recorro el array con forEach, luego innerHTML el navegador lo interpreta como código HTML y genera nuevos nodos con su contenido dentro del elemento seleccionado
 productosIndex.forEach(productoArray => {
     divProductos.innerHTML += `
@@ -70,6 +77,8 @@ productosIndex.forEach(productoArray => {
         const productoCarrito = new Producto (productoArray.id, productoArray.nombre, productoArray.genero, productoArray.edad, productoArray.color, productoArray.precio, productoArray.stock, productoArray.imagen);
         carrito.push(productoCarrito);
         localStorage.setItem("carrito", JSON.stringify(carrito))
+        Swal.fire('Producto enviado al carrito 🛒')
+        renderizarCarrito();
     })
 })
 
@@ -78,6 +87,7 @@ const input1 = document.getElementById("input1")
 const botonBusqueda = document.getElementById("botonBusqueda")
 const botonTodo = document.getElementById("botonTodos")
 const botonCarrito = document.getElementById("botonCarrito")
+const totalCarrito = document.getElementById("totalCarrito")
 
 
 //input con el filtrado de productos por color
@@ -110,6 +120,8 @@ input1.addEventListener("change", (e) =>{
                     const productoCarrito = new Producto (productosArray2.id, productosArray2.nombre, productosArray2.genero, productosArray2.edad, productosArray2.color, productosArray2.precio, productosArray2.stock, productosArray2.imagen);
                     carrito.push(productoCarrito);
                     localStorage.setItem("carrito", JSON.stringify(carrito))
+                    Swal.fire('Producto enviado al carrito 🛒')
+                    renderizarCarrito();
                 })
             })
         }
@@ -118,6 +130,18 @@ input1.addEventListener("change", (e) =>{
 botonBusqueda.addEventListener("click", (event) =>{
     event.preventDefault(input1.value)
 })
+
+//Boton total carrito, saca el calculo total de los productos enviados al carrito
+totalCarrito.addEventListener("click", () =>{
+    // Opreador Nullish en la suma Total de los productos en carrito
+    let precioTotal = 0
+    carrito.forEach((producto) => {
+    precioTotal += producto.precio ?? 0 
+    })
+    //operador ternario con las opciones del carrito: Vacio / Precio total del carrito
+    carrito.length === 0 ? Swal.fire('🛒 El carrito está vacío') : Swal.fire(`Total a pagar $${precioTotal}`)
+})
+
 //Boton todos los productos, trae la lista completa de productos
 botonTodo.addEventListener("click", (event) =>{
     event.preventDefault(input1.value)
@@ -143,21 +167,32 @@ botonTodo.addEventListener("click", (event) =>{
             const productoCarrito = new Producto (productoArray.id, productoArray.nombre, productoArray.genero, productoArray.edad, productoArray.color, productoArray.precio, productoArray.stock, productoArray.imagen);
             carrito.push(productoCarrito);
             localStorage.setItem("carrito", JSON.stringify(carrito))
+            Swal.fire('Producto enviado al carrito 🛒')
+            renderizarCarrito();
         })
     })
 })
 
 // boton carrito traigo los elementos del LocalStorage que estan en el array carrito y los muestro en el DOM
 botonCarrito.addEventListener("click", () =>{
-    let arrayStorage = JSON.parse(localStorage.getItem("carrito"))
-    divCarrito.innerText =`Productos en Carrito🔻`
+    // operador ternario, primero declaramos y asignamos condicionales
+    const mensCarrito = (carrito.length === 0) ? true : false
+    // mostramos el mensaje
+    mensCarrito ? Swal.fire('🛒 El carrito está vacío') : renderizarCarrito();
+})
 
+//funcion enviar al carrito, para actualizar en vivo la carga del carrito
+// boton carrito traigo los elementos del LocalStorage que estan en el array carrito y los muestro en el DOM
+function renderizarCarrito() {
+    let arrayStorage = JSON.parse(localStorage.getItem("carrito"));
+    divCarrito.innerText =`Productos en Carrito🔻`;
     arrayStorage.forEach((local, indice) => {
         divCarrito.innerHTML +=`
         <h6 id:"local${indice}" class="mt-2">Nombre:${local.nombre}<span class="badge bg-danger mb-2">$${local.precio}</span><button id="local${local.id}" type="button" class="btn btn-outline-dark btn-sm m-1 p-1">Borrar</button></h6>
         `
     });
-    //boton borrar elementos del carrito, primero del DOM, luego del Array y por ultimo vuelvo a mandar al local storage con el array modificado sin el item, por ultimo muestro en la consola el m¿nombre del producto eliminado del carrito
+
+        //boton borrar elementos del carrito, primero del DOM, luego del Array y por ultimo vuelvo a mandar al local storage con el array modificado sin el item, por ultimo muestro en la consola el m¿nombre del producto eliminado del carrito
     arrayStorage.forEach((local) =>{
         let botonEliminar = document.getElementById(`local${local.id}`);
         botonEliminar.addEventListener("click", () =>{
@@ -167,5 +202,4 @@ botonCarrito.addEventListener("click", () =>{
             console.log(`${local.nombre} Eliminada del carrito`)
         })
     })
-})
-
+}
