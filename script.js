@@ -1,11 +1,3 @@
-/* let carrito = []; */
-//creo el array vacio carrito y compruebo al ingresar en el sitio web si existe info el localStorage, si no lo creo
-/* if(localStorage.getItem("carrito")){
-    carrito = JSON.parse(localStorage.getItem("carrito"))
-}else{ 
-    localStorage.setItem("carrito", JSON.stringify(carrito))
-} */
-
 // Operador ternario donde compruebo al ingresar en el sitio web si existe info el localStorage, si no lo creo carrito []
 const carrito = JSON.parse(localStorage.getItem("carrito")) ?? []
 // operador lógico AND
@@ -88,7 +80,6 @@ const botonBusqueda = document.getElementById("botonBusqueda")
 const botonTodo = document.getElementById("botonTodos")
 const botonCarrito = document.getElementById("botonCarrito")
 const totalCarrito = document.getElementById("totalCarrito")
-
 
 //input con el filtrado de productos por color
 input1.addEventListener("change", (e) =>{
