@@ -56,7 +56,7 @@ productosIndex.forEach(productoArray => {
                 <h5 class="card-title">Nombre: ${productoArray.nombre}</h5>
                 <p class="card-text p">Género: ${productoArray.genero} | Edad: ${productoArray.edad}</p>
                 <p class="card-text precio">Precio: $${productoArray.precio}</p>
-                <button type="button" class="btn btn-outline-secondary">Enviar al Carrito 🛒</button>
+                <button type="button" class="btn btn-outline-secondary"><i class="fas fa-cart-plus">Enviar al Carrito</i></button>
             </div>
         </div>
     `
@@ -69,7 +69,7 @@ productosIndex.forEach(productoArray => {
         const productoCarrito = new Producto (productoArray.id, productoArray.nombre, productoArray.genero, productoArray.edad, productoArray.color, productoArray.precio, productoArray.stock, productoArray.imagen);
         carrito.push(productoCarrito);
         localStorage.setItem("carrito", JSON.stringify(carrito))
-        Swal.fire('Producto enviado al carrito 🛒')
+        enviadoAlCarrito();
         renderizarCarrito();
     })
 })
@@ -80,6 +80,7 @@ const botonBusqueda = document.getElementById("botonBusqueda")
 const botonTodo = document.getElementById("botonTodos")
 const botonCarrito = document.getElementById("botonCarrito")
 const totalCarrito = document.getElementById("totalCarrito")
+const productoCarrito = document.getElementById("productoCarrito")
 
 //input con el filtrado de productos por color
 input1.addEventListener("change", (e) =>{
@@ -98,7 +99,7 @@ input1.addEventListener("change", (e) =>{
                             <h5 class="card-title">Nombre: ${productosArray2.nombre}</h5>
                             <p class="card-text p">Género: ${productosArray2.genero} | Edad: ${productosArray2.edad}</p>
                             <p class="card-text precio">Precio: $${productosArray2.precio}</p>
-                            <button type="button" class="btn btn-outline-secondary">Enviar al Carrito 🛒</button>
+                            <button type="button" class="btn btn-outline-secondary"><i class="fas fa-cart-plus">Enviar al Carrito</i></button>
                         </div>
                     </div>
                     `
@@ -111,7 +112,7 @@ input1.addEventListener("change", (e) =>{
                     const productoCarrito = new Producto (productosArray2.id, productosArray2.nombre, productosArray2.genero, productosArray2.edad, productosArray2.color, productosArray2.precio, productosArray2.stock, productosArray2.imagen);
                     carrito.push(productoCarrito);
                     localStorage.setItem("carrito", JSON.stringify(carrito))
-                    Swal.fire('Producto enviado al carrito 🛒')
+                    enviadoAlCarrito();
                     renderizarCarrito();
                 })
             })
@@ -129,8 +130,20 @@ totalCarrito.addEventListener("click", () =>{
     carrito.forEach((producto) => {
     precioTotal += producto.precio ?? 0 
     })
-    //operador ternario con las opciones del carrito: Vacio / Precio total del carrito
-    carrito.length === 0 ? Swal.fire('🛒 El carrito está vacío') : Swal.fire(`Total a pagar $${precioTotal}`)
+    //operador ternario con las opciones del carrito: Vacio / Precio total del carrito y finalizar compra
+    carrito.length === 0 ? Swal.fire('🛒 El carrito está vacío') : 
+    Swal.fire({
+        title: 'Carrito total a pagar: $'+ precioTotal,
+        html:`<div id="productoCarrito"></div>`,
+        showCancelButton: true,
+        cancelButtonText: 'Seguir comprando',
+        confirmButtonText: 'Finalizar compra',
+    }).then((result) => {
+        if (result.isConfirmed) {
+        Swal.fire('Compra finalizada','','success')
+        } 
+    })
+    
 })
 
 //Boton todos los productos, trae la lista completa de productos
@@ -145,7 +158,7 @@ botonTodo.addEventListener("click", (event) =>{
                 <h5 class="card-title">Nombre: ${productoArray.nombre}</h5>
                 <p class="card-text p">Género: ${productoArray.genero} | Edad: ${productoArray.edad}</p>
                 <p class="card-text precio">Precio: $${productoArray.precio}</p>
-                <button type="button" class="btn btn-outline-secondary">Enviar al Carrito 🛒</button>
+                <button type="button" class="btn btn-outline-secondary"><i class="fas fa-cart-plus">Enviar al Carrito</i></button>
             </div>
         </div>
         `
@@ -158,7 +171,7 @@ botonTodo.addEventListener("click", (event) =>{
             const productoCarrito = new Producto (productoArray.id, productoArray.nombre, productoArray.genero, productoArray.edad, productoArray.color, productoArray.precio, productoArray.stock, productoArray.imagen);
             carrito.push(productoCarrito);
             localStorage.setItem("carrito", JSON.stringify(carrito))
-            Swal.fire('Producto enviado al carrito 🛒')
+            enviadoAlCarrito();
             renderizarCarrito();
         })
     })
@@ -182,7 +195,6 @@ function renderizarCarrito() {
         <h6 id:"local${indice}" class="mt-2">Nombre:${local.nombre}<span class="badge bg-danger mb-2">$${local.precio}</span><button id="local${local.id}" type="button" class="btn btn-outline-dark btn-sm m-1 p-1">Borrar</button></h6>
         `
     });
-
         //boton borrar elementos del carrito, primero del DOM, luego del Array y por ultimo vuelvo a mandar al local storage con el array modificado sin el item, por ultimo muestro en la consola el m¿nombre del producto eliminado del carrito
     arrayStorage.forEach((local) =>{
         let botonEliminar = document.getElementById(`local${local.id}`);
@@ -194,3 +206,20 @@ function renderizarCarrito() {
         })
     })
 }
+
+function enviadoAlCarrito (){
+    Toastify({
+        text: `Producto agregado al carrito 🛒`,
+        duration: 2000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+        background: "linear-gradient(to right, #FF0000, #EBCC12)",
+        },
+    }).showToast();
+}
+

@@ -66,3 +66,9 @@ h5{
     text-align: center;
     color: rgb(140, 140, 140);
 }
+
+.swal2-styled.swal2-confirm{
+    background-color: rgb(255, 0, 51);
+    color: aliceblue;
+}
+

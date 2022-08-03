@@ -8,12 +8,15 @@
     <meta name="description" content="D&M Odontólogos, Centro Odontológico especializado en implantes dentales y cuidados integrales de la salud bucal. Trabajamos con obras sociales y en forma particular. Realizamos protectores bucales deportivos personalizados">
 
     <link rel="icon" type="image/x-icon" href="./img/favicon.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!-- <link rel="stylesheet" href="https://bootswatch.com/5/minty/bootstrap.min.css"> -->
     <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Asap:wght@100;400;600;700&family=Roboto:wght@100;400;500;700;900&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/9f903b0588.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
     <script src="./js/bootstrap.bundle.min.js"></script>
     <title>Protectores Deportivos</title>
 </head>
@@ -44,16 +47,18 @@
         <div class="col-2 mt-5 "><!-- Div con el ID "carrito" cargan los productos  -->
             <div class="col align-self-start pb-2 border-bottom border-danger"></div>
             <div id="carrito" class="p-0 m-2">
-                <button id="botonCarrito" type="button" class="btn btn-outline-dark">Ver Carrito 🛒</button>
+                <button id="botonCarrito" type="button" class="btn btn-outline-dark">Ver Carrito <i class="fas fa-cart-plus"></i></button>
             </div>
             <div class="col align-self-start pb-2 border-bottom border-danger"></div>
             <div id="precioCarrito" class="p-0 m-2" >
-                <button id="totalCarrito" type="button" class="btn btn-outline-danger btn-sm">Total a Pagar<i class="fas fa-cart-arrow-down fa-2x"></i></button>
+                <button id="totalCarrito" type="button" class="btn btn-outline-danger btn-sm">Comprar ahora<i class="fas fa-cart-arrow-down"></i></button>
             </div>
         </div>
     </div>
     </div>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"></script>
     <script src="script.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
