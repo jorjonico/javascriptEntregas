@@ -56,7 +56,7 @@ productosIndex.forEach(productoArray => {
                 <h5 class="card-title">Nombre: ${productoArray.nombre}</h5>
                 <p class="card-text p">Género: ${productoArray.genero} | Edad: ${productoArray.edad}</p>
                 <p class="card-text precio">Precio: $${productoArray.precio}</p>
-                <button type="button" class="btn btn-outline-secondary"><i class="fas fa-cart-plus">Enviar al Carrito</i></button>
+                <button type="button" class="btn btn-outline-secondary">Enviar al Carrito <i class="fas fa-cart-plus"></i></button>
             </div>
         </div>
     `
@@ -99,7 +99,7 @@ input1.addEventListener("change", (e) =>{
                             <h5 class="card-title">Nombre: ${productosArray2.nombre}</h5>
                             <p class="card-text p">Género: ${productosArray2.genero} | Edad: ${productosArray2.edad}</p>
                             <p class="card-text precio">Precio: $${productosArray2.precio}</p>
-                            <button type="button" class="btn btn-outline-secondary"><i class="fas fa-cart-plus">Enviar al Carrito</i></button>
+                            <button type="button" class="btn btn-outline-secondary">Enviar al Carrito <i class="fas fa-cart-plus"></i></button>
                         </div>
                     </div>
                     `
@@ -158,7 +158,7 @@ botonTodo.addEventListener("click", (event) =>{
                 <h5 class="card-title">Nombre: ${productoArray.nombre}</h5>
                 <p class="card-text p">Género: ${productoArray.genero} | Edad: ${productoArray.edad}</p>
                 <p class="card-text precio">Precio: $${productoArray.precio}</p>
-                <button type="button" class="btn btn-outline-secondary"><i class="fas fa-cart-plus">Enviar al Carrito</i></button>
+                <button type="button" class="btn btn-outline-secondary">Enviar al Carrito <i class="fas fa-cart-plus"></i></button>
             </div>
         </div>
         `
@@ -206,7 +206,7 @@ function renderizarCarrito() {
         })
     })
 }
-
+// Toastify con el cartelito enviando al carrito
 function enviadoAlCarrito (){
     Toastify({
         text: `Producto agregado al carrito 🛒`,

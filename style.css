@@ -1,12 +1,12 @@
 /* estilo universal */
 * {
-    padding-left: 2rem;
-    padding-right: 2rem;
     margin: 0;
     box-sizing: border-box;
 }
 body{
     background-color: rgb(221, 221, 221);
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 /* estilos */
 h1{
@@ -71,4 +71,3 @@ h5{
     background-color: rgb(255, 0, 51);
     color: aliceblue;
 }
-
