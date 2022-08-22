@@ -1,0 +1,62 @@
+[
+    {
+        "id": 22,
+        "nombre": "Hiena",
+        "genero": "Hombre",
+        "edad": "Adultos",
+        "color": "amarillo",
+        "precio": 450,
+        "stock": 50,
+        "imagen": "img/amarillo_oferta.webp"
+    },
+    {
+        "id": 23,
+        "nombre": "Orca",
+        "genero": "Mujer",
+        "edad": "Adultos",
+        "color": "azul",
+        "precio": 400,
+        "stock": 50,
+        "imagen": "img/azul_oferta.webp"
+    },
+    {
+        "id": 24,
+        "nombre": "Elefante",
+        "genero": "Mujer",
+        "edad": "Adultos",
+        "color": "celeste",
+        "precio": 400,
+        "stock": 50,
+        "imagen": "img/celeste_oferta.webp"
+    },
+    {
+        "id": 25,
+        "nombre": "Cuervo",
+        "genero": "Hombre",
+        "edad": "Adultos",
+        "color": "negro",
+        "precio": 450,
+        "stock": 50,
+        "imagen": "img/negro_oferta.webp"
+    },
+    {
+        "id": 26,
+        "nombre": "León",
+        "genero": "Hombre",
+        "edad": "Niños",
+        "color": "rojo",
+        "precio": 350,
+        "stock": 50,
+        "imagen": "img/rojo_oferta.webp"
+    },
+    {
+        "id": 27,
+        "nombre": "Araña",
+        "genero": "Mujer",
+        "edad": "Adultos",
+        "color": "violeta",
+        "precio": 300,
+        "stock": 50,
+        "imagen": "img/violeta_oferta.webp"
+    }
+]
