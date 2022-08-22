@@ -10,14 +10,14 @@
         "imagen": "img/negro.webp"
     },
     {
-        "id": 2,
-        "nombre": "Pantera",
-        "genero": "Mujer",
+        "id": 22,
+        "nombre": "Hiena",
+        "genero": "Hombre",
         "edad": "Adultos",
-        "color": "negro",
-        "precio": 900,
+        "color": "amarillo",
+        "precio": 450,
         "stock": 50,
-        "imagen": "img/negro.webp"
+        "imagen": "img/amarillo_oferta.webp"
     },
     {
         "id": 3,
@@ -28,6 +28,26 @@
         "precio": 900,
         "stock": 50,
         "imagen": "img/rojo.webp"
+    },
+    {
+        "id": 6,
+        "nombre": "Chita",
+        "genero": "Mujer",
+        "edad": "Adultos",
+        "color": "rosa",
+        "precio": 700,
+        "stock": 50,
+        "imagen": "img/rosa.webp"
+    },
+    {
+        "id": 2,
+        "nombre": "Pantera",
+        "genero": "Mujer",
+        "edad": "Adultos",
+        "color": "negro",
+        "precio": 900,
+        "stock": 50,
+        "imagen": "img/negro.webp"
     },
     {
         "id": 4,
@@ -50,16 +70,6 @@
         "imagen": "img/azul.webp"
     },
     {
-        "id": 6,
-        "nombre": "Chita",
-        "genero": "Mujer",
-        "edad": "Adultos",
-        "color": "rosa",
-        "precio": 700,
-        "stock": 50,
-        "imagen": "img/rosa.webp"
-    },
-    {
         "id": 7,
         "nombre": "Loro",
         "genero": "Unisex",
@@ -68,6 +78,26 @@
         "precio": 600,
         "stock": 50,
         "imagen": "img/verde.webp"
+    },
+    {
+        "id": 23,
+        "nombre": "Orca",
+        "genero": "Mujer",
+        "edad": "Adultos",
+        "color": "azul",
+        "precio": 400,
+        "stock": 50,
+        "imagen": "img/azul_oferta.webp"
+    },
+    {
+        "id": 24,
+        "nombre": "Elefante",
+        "genero": "Mujer",
+        "edad": "Adultos",
+        "color": "celeste",
+        "precio": 400,
+        "stock": 50,
+        "imagen": "img/celeste_oferta.webp"
     },
     {
         "id": 8,
@@ -208,36 +238,6 @@
         "precio": 900,
         "stock": 50,
         "imagen": "img/celeste.webp"
-    },
-    {
-        "id": 22,
-        "nombre": "Hiena",
-        "genero": "Hombre",
-        "edad": "Adultos",
-        "color": "amarillo",
-        "precio": 450,
-        "stock": 50,
-        "imagen": "img/amarillo_oferta.webp"
-    },
-    {
-        "id": 23,
-        "nombre": "Orca",
-        "genero": "Mujer",
-        "edad": "Adultos",
-        "color": "azul",
-        "precio": 400,
-        "stock": 50,
-        "imagen": "img/azul_oferta.webp"
-    },
-    {
-        "id": 24,
-        "nombre": "Elefante",
-        "genero": "Mujer",
-        "edad": "Adultos",
-        "color": "celeste",
-        "precio": 400,
-        "stock": 50,
-        "imagen": "img/celeste_oferta.webp"
     },
     {
         "id": 25,
